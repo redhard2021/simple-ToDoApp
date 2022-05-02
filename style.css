@@ -1,0 +1,36 @@
+body{
+    background: #9db7d092;
+}
+
+p{
+    padding-left: 1rem;
+}
+
+
+
+#title {
+    color: white;
+    font-weight: 750;
+}
+.container {
+    background-color: rgba(24, 149, 129, 0.873);
+}
+
+
+.navbar-class{
+    background-color: rgba(24, 149, 129, 0.873);
+    padding: 0.3rem;
+
+}
+.list-group{
+    margin-top: 2rem;
+}
+
+.btns {
+    padding-left: 9rem;
+}
+
+.fa{
+    cursor: pointer;
+}
+
