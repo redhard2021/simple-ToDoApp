@@ -1,5 +1,17 @@
 window.onload = init;
-idTask = 1;
+idTask = 0;
+output = document.getElementById("output");
+
+console.log("hello")
+
+insertLocalStoragesTodos = () => {
+  for (var i = 0; i < localStorage.length; i++){
+    output.innerHTML += localStorage.getItem(localStorage.key(i));
+    console.log(i)
+}
+
+}
+insertLocalStoragesTodos();
 
 taskValidation = (title, textarea) => {
     if (title === "" || textarea === "") {
@@ -14,6 +26,7 @@ taskValidation = (title, textarea) => {
 saveTask = () => {
     title = document.getElementById("titleInput").value;
     textarea = document.getElementById("textAreaInput").value;
+    idTask++;
 
     message =
         `<a id=${idTask} class="list-group-item">
@@ -28,18 +41,20 @@ saveTask = () => {
         </div>
       </a>`;
 
-    taskValidation(title, textarea);
-    output.innerHTML += message;
-    idTask++;
-}
+      taskValidation(title, textarea);
+      output.innerHTML += message;
+      localStorage.setItem(`task${idTask}`,message);
+  }
 
-deleteTask = (id) => {
-  taskToDelete = document.getElementById(id);
-  taskToDelete.remove();
-}
-
-
-function init() {
+  
+  deleteTask = (id) => {
+    taskToDelete = document.getElementById(id);
+    localStorage.removeItem(`task${id}`)
+    taskToDelete.remove();
+  }
+  
+  
+  function init() {
     output = document.getElementById("output");
     saveButton = document.getElementById("saveTask");
     saveButton.addEventListener("click", saveTask);
